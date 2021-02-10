@@ -16,7 +16,6 @@ public class Graph : MonoBehaviour
 	void Awake () {
 		float step = 2f / resolution;
 		var scale = Vector3.one * step;
-		
 		points = new Transform[resolution * resolution];
 		
 		for (int i = 0; i < points.Length; i++) {
@@ -31,7 +30,6 @@ public class Graph : MonoBehaviour
 		FunctionLibrary.Function f = FunctionLibrary.GetFunction(function);
 		float time = Time.time;
 		float step = 2f / resolution;
-		float v = 0.5f * step - 1f;
 		
 		for (int i = 0, x = 0, z = 0; i < points.Length; i++, x++) {
 			if (x == resolution) {
@@ -39,6 +37,7 @@ public class Graph : MonoBehaviour
 				z += 1;
 			}
 			float u = (x + 0.5f) * step - 1f;
+			float v = (z + 0.5f) * step - 1f;
 			points[i].localPosition = f(u, v, time);
 		}
 	}
